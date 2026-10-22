@@ -5,8 +5,7 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   it('should create the app', () => {
@@ -19,6 +18,14 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, untitled3');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Ejercicios de Componentes Angular Standalone');
+  });
+
+  it('should change active tab when clicking tab buttons', () => {
+    const fixture = TestBed.createComponent(App);
+    const app = fixture.componentInstance;
+    expect(app.tabActiva).toBe(0);
+    app.cambiarTab(2);
+    expect(app.tabActiva).toBe(2);
   });
 });
